@@ -134,7 +134,7 @@ $ echo $(expr $(getconf _PHYS_PAGES) / 2 \* $(getconf PAGE_SIZE))
 
 在 `/etc/sysctl.conf` 配置文件中，
 
-- `vm.overcommit_memory` 是一个 Linux 内核参数，表示系统可分配给某进程的内存大小。将 `vm.overcommit_memory` 设置为 `2`，表示当系统分配的内存超过 2 GB 时，系统会拒绝该操作。
+- `vm.overcommit_memory` 是一个 Linux 内核参数，表示系统可分配给某进程的内存大小。将 `vm.overcommit_memory` 设置为 `2`，表示严格限制过量承诺，系统几乎不会因为内存过量分配而触发OOM Killer，但可能导致某些应用因无法获得所需的虚拟内存而失败。
 - `vm.overcommit_ratio` 是一个内核参数，是应用进程占用 RAM 的百分比。在 CentOS 上默认值为 `50`。`vm.overcommit_ratio` 的计算公式如下：
 
     ```
